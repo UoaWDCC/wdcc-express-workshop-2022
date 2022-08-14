@@ -1,0 +1,16 @@
+{
+  "name": "wdcc-express-workshop-2022",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:UoaWDCC/wdcc-express-workshop-2022.git",
+  "author": "Raymond Feng <rf.raymondfeng@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "start": "node --es-module-specifier-resolution=node src/index.js"
+  },
+  "type": "module",
+  
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
