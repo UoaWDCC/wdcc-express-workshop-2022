@@ -1,0 +1,58 @@
+<html>
+  <head>
+
+  </head>
+  <body>
+    Waddup peeps.
+
+    <h6>Author</h6>
+    <p id="author"></p>
+
+
+    <h6>Content</h6>
+    <p id="content"></p>
+
+
+    Author <input id="author-in" type='text' />
+    <br />
+    Content <input id="content-in" type='text' />
+
+    <input id="submit" type="button" onclick="submitFeedback()" />
+
+
+    <script type="text/javascript" defer>
+
+      const submitFeedback = () => {
+        const author = document.getElementById('author-in').value
+        const content = document.getElementById('content-in').value
+
+        console.log(author, content);
+
+        const dataToSend = {
+          author: author,
+          content: content
+        }
+
+        const headers = {
+          'content-type': 'application/json'
+        }
+
+        // Sends a post request to the server.
+        fetch('http://localhost:9000/api/feedback/new', 
+        { 
+          method: "POST", 
+          headers: headers,
+          body: JSON.stringify(dataToSend)
+        }).then((res) => console.log(res));
+      };
+
+      fetch("http://localhost:9000/api/feedback/list", { method: "GET" })
+          .then((res) => res.json())
+          .then((data) => {
+            const first = data[0];
+            document.getElementById('author').innerHTML = first.author;
+            document.getElementById('content').innerHTML = first.content;
+          });
+    </script>
+  </body>
+</html>
